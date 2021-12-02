@@ -6,7 +6,7 @@ export const createList = () => {
   bookList.innerHTML = "";
 
   if (myBooks.length === 0) {
-    bookList.innerHTML = "No";
+    bookList.innerHTML = "No more books";
   }
 
   myBooks.forEach((book) => {
