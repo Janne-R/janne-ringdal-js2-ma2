@@ -19,27 +19,27 @@ export const createList = () => {
 
   });
 
-  const removeFromList = (event) => {
-    console.log(event);
-
-    const deleteBook = event.target.dataset.title;
-
-    const newList = myBooks.filter((book) => {
-      if (deleteBook !== book.title) {
-        return true;
-      }
-    });
-
-    myBooks = newList;
-    createList();
-  }
-
   const trashCans = document.querySelectorAll("li i");
 
   trashCans.forEach((can) => {
     can.addEventListener("click", removeFromList);
 
   });
+}
+
+const removeFromList = (event) => {
+  console.log(event);
+
+  const deleteBook = event.target.dataset.title;
+
+  const newList = myBooks.filter((book) => {
+    if (deleteBook !== book.title) {
+      return true;
+    }
+  });
+
+  myBooks = newList;
+  createList();
 }
 
 createList();
