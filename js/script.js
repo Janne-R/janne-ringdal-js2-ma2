@@ -8,6 +8,10 @@ const createList = () => {
 
   listContainer.innerHTML = "";
 
+  if (listItems.length === 0) {
+    listContainer.innerHTML = "The list is empty.";
+  }
+
   listItems.forEach((item) => {
     listContainer.innerHTML += `
     <li><span>${item}</span><i class="fas fa-trash" data-item="${item}"></i></li>
