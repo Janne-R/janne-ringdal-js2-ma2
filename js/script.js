@@ -1,26 +1,35 @@
-import { saveToStorage, getFromStorage } from "./components/localStorage.js";
-import { createList } from "./components/createList.js";
-import { listKey } from "./constants/settings.js";
+let listItems = [];
 
 const listInput = document.querySelector("input");
 const button = document.querySelector("button");
 
-const todos = getFromStorage(listKey);
-createList(todos);
+const createList = () => {
+  const listContainer = document.querySelector("ul");
+
+  listContainer.innerHTML = "";
+
+  listItems.forEach((item) => {
+    listContainer.innerHTML += `
+    <li><span>${item}</span><i class="fas fa-trash"></i></li>
+    `;
+  });
+
+}
 
 const addToList = () => {
-  const itemValue = listInput.value.trim();
-  if (itemValue.length >= 1) {
-    const newItem = { id: Date.now(), name: itemValue };
-    todos.push(newItem);
+  const newBook = listInput.value.trim();
+
+  if (newBook.length >= 1) {
+    listItems.push(newBook);
+    createList();
     listInput.value = "";
     listInput.focus();
-
-    createList(todos);
-    saveToStorage(listKey, todos);
   }
-  console.log(todos);
+
 
 }
 
 button.addEventListener("click", addToList);
+
+
+
