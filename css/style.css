@@ -1,0 +1,17 @@
+main {
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.book-block {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-block_list {
+  display: flex;
+  flex-direction: column;
+}
