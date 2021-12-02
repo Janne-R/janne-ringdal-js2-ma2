@@ -10,10 +10,15 @@ const createList = () => {
 
   listItems.forEach((item) => {
     listContainer.innerHTML += `
-    <li><span>${item}</span><i class="fas fa-trash"></i></li>
+    <li><span>${item}</span><i class="fas fa-trash" data-item="${item}"></i></li>
     `;
   });
 
+  const trashCans = document.querySelectorAll("li i");
+
+  trashCans.forEach((can) => {
+    can.addEventListener("click", removeFromList);
+  });
 }
 
 const addToList = () => {
@@ -25,11 +30,24 @@ const addToList = () => {
     listInput.value = "";
     listInput.focus();
   }
-
-
 }
 
 button.addEventListener("click", addToList);
+
+const removeFromList = (event) => {
+
+  const deleteItem = event.target.dataset.item;
+  console.log(deleteItem);
+
+  const newList = listItems.filter((item) => {
+    if (deleteItem !== item) {
+      return true;
+    }
+
+  });
+  listItems = newList;
+  createList();
+}
 
 
 
